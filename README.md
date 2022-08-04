@@ -57,6 +57,11 @@ station device connect SSID
 
 ---
 
+### Install essential packages
+`# pacstrap /mnt base linux linux-lts linux-firmware vim nano git`
+
+---
+
 ### Fstab
 `# genfstab -U /mnt >> /mnt/etc/fstab`
 
@@ -64,11 +69,6 @@ station device connect SSID
 
 ### Chroot
 `# arch-chroot /mnt`
-
----
-
-### Install essential packages
-`# pacstrap /mnt base linux linux-lts linux-firmware vim nano git`
 
 ---
 
