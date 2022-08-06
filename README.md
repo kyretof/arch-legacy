@@ -88,6 +88,11 @@ station device connect SSID
 
 ---
 
+#Network Manager
+systemctl enable NetworkManager
+
+---
+
 #Grub
 ```
 grub-install --target=i386-pc /dev/sda
