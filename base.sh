@@ -13,16 +13,9 @@ echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 #Network configuration
 echo "arch" >> /etc/hostname
 
-echo "127.0.0.1 	localhost" >> /etc/hosts
-echo "::1 	localhost" >> /etc/hosts
-echo "127.0.1.1 	arch.localdomain 	arch" >> /etc/hosts
-
-#Install
-pacman -S xorg xorg-xinit i3 i3status i3blocks i3-gaps nitrogen picom dmenu firefox opera alacritty pulseaudio pulseaudio-alsa alsa alsa-utils alsamixer htop grub efibootmgr dosfstools os-prober mtools networkmanager base-devel linux-headers htop sudo xf86-video-intel intel-ucode terminator
-
-#Grub
-grub-install --target=i386-pc /dev/sda
-grub-mkconfig -o /boot/grub/grub.cfg
+echo "127.0.0.1 localhost" >> /etc/hosts
+echo "::1 localhost" >> /etc/hosts
+echo "127.0.1.1 arch.localdomain arch" >> /etc/hosts
 
 #Network Manager
 systemctl start NetworkManager
