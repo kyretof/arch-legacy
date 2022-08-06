@@ -26,7 +26,7 @@ station device connect SSID
 # cfdisk
 2G | Linux Swap
 50G | Linux
-````
+```
 
 ---
 
