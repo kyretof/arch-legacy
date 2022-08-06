@@ -39,7 +39,7 @@ station device connect SSID
 
 ### Mount the file systems
 ```
-# mount /dev/sda2
+# mount /dev/sda2 /mnt
 # swapon /dev/sda1
 ```
 ---
