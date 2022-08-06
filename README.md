@@ -83,7 +83,7 @@ station device connect SSID
 ---
 
 ### Install
-`pacman -S xorg xorg-xinit i3 i3status i3blocks i3-gaps nitrogen picom dmenu firefox opera alacritty terminator alsa alsa-utils alsamixer htop grub dosfstools os-prober mtools networkmanager base-devel linux-headers htop sudo xf86-video-intel intel-ucode
+`pacman -S xorg xorg-xinit i3 i3status i3blocks i3-gaps nitrogen picom dmenu firefox opera alacritty terminator alsa alsa-utils htop grub dosfstools os-prober mtools networkmanager base-devel linux-headers htop sudo xf86-video-intel intel-ucode
 `
 
 passwd
