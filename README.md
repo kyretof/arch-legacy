@@ -1,4 +1,4 @@
-# Arch Linux installation
+# Arch Linux Legacy Installation
 
 ### Verify the boot mode
 `# ls /sys/firmware/efi/efivars`
@@ -57,8 +57,13 @@ station device connect SSID
 
 ---
 
+### Keyring update
+`pacman -S archlinux-keyring`
+
+---
+
 ### Install essential packages
-`# pacstrap /mnt base linux linux-lts linux-firmware vim nano git`
+`# pacstrap /mnt base linux-lts linux-firmware vim nano git`
 
 ---
 
@@ -75,16 +80,17 @@ station device connect SSID
 ### base.sh
 ```
 chmod +x base.sh
-passwd (root)
-passwd kyretof (additional user)
-
+passwd
+passwd user
 EDITOR=nano visudo
 wheelall
 ```
 
+---
 
 ### xinitrc 
 ```
+cp /etc/X11/xinit/xinitrc ~/.xinitrc
 nitrogen --restore &
 picom & 
 exec i3
