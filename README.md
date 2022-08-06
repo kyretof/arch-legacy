@@ -86,15 +86,18 @@ station device connect SSID
 `pacman -S xorg xorg-xinit i3 i3status i3blocks i3-gaps nitrogen picom dmenu firefox opera alacritty terminator alsa alsa-utils htop grub dosfstools os-prober mtools networkmanager base-devel linux-headers htop sudo xf86-video-intel intel-ucode
 `
 
-passwd
-passwd user
-EDITOR=nano visudo
-wheelall
+---
+
+#Grub
+```
+grub-install --target=i386-pc /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 ---
 
 ### xinitrc 
+
 ```
 cp /etc/X11/xinit/xinitrc ~/.xinitrc
 nitrogen --restore &
@@ -105,7 +108,7 @@ exec i3
 ---
 
 ### i3 config
-```
+
 exec_always xrandr --output LVDS1 --off
 
 #hide edge borders both
