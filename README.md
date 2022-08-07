@@ -125,9 +125,11 @@ exec i3
 exec_always xrandr --output LVDS1 --off
 
 #hide edge borders both
+
 for_window [class="^.*"] border pixel 2
 
 #gaps
+
 gaps inner 15
 gaps outer 15
 
