@@ -88,8 +88,8 @@ station device connect SSID
 
 ---
 
-#Network Manager
-systemctl enable NetworkManager
+### Network Manager
+`systemctl enable NetworkManager`
 
 ---
 
