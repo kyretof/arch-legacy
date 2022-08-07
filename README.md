@@ -101,14 +101,22 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 ---
 
+#Firewall
+```
+sudo pacman -S ufw
+sudo systemctl start ufw
+sudo systemctl enable ufw
+```
+
+---
+
 ### xinitrc 
 
-```
 cp /etc/X11/xinit/xinitrc ~/.xinitrc
 nitrogen --restore &
 picom & 
 exec i3
-```
+
 
 ---
 
@@ -123,3 +131,14 @@ for_window [class="^.*"] border pixel 2
 gaps inner 15
 gaps outer 15
 
+---
+
+### Font
+```
+pacman -S dina-font tamsyn-font ttf-bitstream-vera ttf-croscore ttf-dejavu ttf-droid gnu-free-fonts ttf-ibm-plex ttf-liberation ttf-linux-libertine noto-fonts ttf-roboto tex-gyre-fonts ttf-ubuntu-font-family ttf-anonymous-pro ttf-cascadia-code ttf-fantasque-sans-mono ttf-fira-mono ttf-hack ttf-fira-code ttf-inconsolata ttf-jetbrains-mono ttf-monofur adobe-source-code-pro-fonts cantarell-fonts inter-font ttf-opensans gentium-plus-font ttf-junicode adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts noto-fonts-cjk noto-fonts-emoji
+```
+
+---
+
+### yay
+`sudo git clone https://aur.archlinux.org/yay-git.git`
