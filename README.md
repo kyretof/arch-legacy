@@ -113,8 +113,11 @@ sudo systemctl enable ufw
 ### xinitrc 
 
 cp /etc/X11/xinit/xinitrc ~/.xinitrc
+
 nitrogen --restore &
+
 picom & 
+
 exec i3
 
 
