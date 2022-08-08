@@ -93,7 +93,7 @@ station device connect SSID
 
 ---
 
-#Grub
+### Grub
 ```
 grub-install --target=i386-pc /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -101,7 +101,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 ---
 
-#Firewall
+### Firewall
 ```
 sudo pacman -S ufw
 sudo systemctl start ufw
