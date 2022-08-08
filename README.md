@@ -146,4 +146,8 @@ pacman -S dina-font tamsyn-font ttf-bitstream-vera ttf-croscore ttf-dejavu ttf-d
 ---
 
 ### yay
-`sudo git clone https://aur.archlinux.org/yay-git.git`
+```
+sudo git clone https://aur.archlinux.org/yay-git.git
+cd yay
+makepkg -si
+```
