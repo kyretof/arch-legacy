@@ -78,9 +78,11 @@ station device connect SSID
 ---
 
 ### Clone git repo
-`git clone https://github.com/kyretof/arch-legacy`
-`chmod +x base.sh`
-`./base.sh`
+```
+git clone https://github.com/kyretof/arch-legacy
+chmod +x base.sh
+./base.sh
+```
 
 ---
 
