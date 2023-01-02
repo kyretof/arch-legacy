@@ -131,6 +131,8 @@ usermod -aG wheel,audio,video,optical,storage username
 Sudo:
 pacman -S sudo
 EDITOR=nano visudo
+```
+
 ---
 
 ### Install
@@ -146,7 +148,7 @@ EDITOR=nano visudo
 
 ### Grub
 ```
-grub-install --target=i386-pc /dev/sda
+grub-install --target=i386-pc /dev/sda or grub-install /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
