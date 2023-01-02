@@ -1,4 +1,4 @@
-# Arch Linux Legacy Installation
+# Arch Linux DOS/BIOS Installation Guide
 
 ### Verify the boot mode
 `# ls /sys/firmware/efi/efivars`
@@ -77,17 +77,64 @@ station device connect SSID
 
 ---
 
-### Clone git repo
+### Set the time zone
+`# ln -sf /usr/share/zoneinfo/Region/City /etc/localtime`
+
+---
+
+### Run hwclock(8) to generate /etc/adjtime
+`# hwclock --systohc`
+
+---
+
+### Localization
 ```
-git clone https://github.com/kyretof/arch-legacy
-chmod +x base.sh
-./base.sh
+Edit /etc/locale.gen and uncomment en_US.UTF-8 UTF-8 and other needed locales. Generate the locales by running: 
+
+# locale-gen
+
+Create the locale.conf(5) file, and set the LANG variable accordingly: 
+
+# echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 ```
 
 ---
 
+### Network configuration
+```
+Create the hostname file: 
+
+# echo 'hostname' >> /etc/hostname
+
+Add the hosts ip
+
+# vim /etc/hosts
+
+127.0.0.1        localhost
+::1              localhost
+127.0.1.1        myhostname
+
+```
+
+---
+
+### Add user
+
+```
+Users and passwords:
+passwd (set root pass)
+useradd -m username (make another user)
+passwd username (set that user's password)
+usermod -aG wheel,audio,video,optical,storage username
+
+
+Sudo:
+pacman -S sudo
+EDITOR=nano visudo
+---
+
 ### Install
-`pacman -S xorg xorg-xinit i3 i3status i3blocks i3-gaps nitrogen picom dmenu firefox opera alacritty terminator alsa alsa-utils htop grub dosfstools os-prober mtools networkmanager base-devel linux-headers htop sudo xf86-video-intel intel-ucode
+`pacman -S xorg xorg-xinit i3 i3status i3blocks nitrogen picom dmenu firefox opera alacritty terminator alsa alsa-utils htop grub dosfstools os-prober mtools networkmanager base-devel linux-headers htop xf86-video-intel intel-ucode
 `
 
 ---
