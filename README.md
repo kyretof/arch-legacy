@@ -137,7 +137,7 @@ EDITOR=nano visudo
 ---
 
 ### Install
-`$ pacman -S xorg xorg-xinit i3 i3status i3blocks nitrogen picom dmenu firefox opera alacritty terminator alsa alsa-utils htop grub os-prober mtools networkmanager base-devel linux-headers htop xf86-video-intel intel-ucode
+`$ pacman -S xorg xorg-xinit i3 i3status i3blocks nitrogen picom dmenu firefox opera alacritty terminator alsa alsa-utils ranger htop grub os-prober mtools networkmanager base-devel linux-headers htop xf86-video-intel intel-ucode
 `
 
 ---
@@ -166,18 +166,24 @@ $ sudo systemctl enable ufw
 
 ### xinitrc 
 
+```
 cp /etc/X11/xinit/xinitrc ~/.xinitrc
 
 nitrogen --restore &
 
+xrandr --output LVDS1 --off --output VGA1 --mode 1920x1080 --rate 60 &
+
 picom & 
 
 exec i3
-
+```
 
 ---
 
 ### i3 config
+
+```
+$vim .config/i3/config
 
 exec_always xrandr --output LVDS1 --off
 
@@ -189,6 +195,7 @@ for_window [class="^.*"] border pixel 2
 
 gaps inner 15
 gaps outer 15
+```
 
 ---
 
