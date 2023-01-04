@@ -1,17 +1,18 @@
-# Arch Linux DOS/BIOS Installation Guide
+# Arch Linux Installation Guide for DOS/BIOS 
 
 ### Verify the boot mode
 `$ ls /sys/firmware/efi/efivars`
 
+If it shows an error, you have a DOS 
 ---
 
-### Connect to the internet
+### Connect to the internet using wifi
 ```
 iwctl
 device list
-station device scan
-station device get-networks
-station device connect SSID
+station "device" scan
+station "device" get-networks
+station "device" connect SSID
 ```
 
 ---
@@ -137,7 +138,7 @@ EDITOR=nano visudo
 ---
 
 ### Install
-`$ pacman -S xorg xorg-xinit i3 i3status i3blocks nitrogen picom dmenu firefox opera alacritty terminator alsa alsa-utils ranger htop grub os-prober mtools networkmanager base-devel linux-headers htop xf86-video-intel intel-ucode
+`$ pacman -S xorg xorg-xinit i3 polybar nitrogen picom dmenu firefox opera alacritty terminator alsa alsa-utils ranger htop grub os-prober mtools networkmanager base-devel linux-headers xf86-video-intel intel-ucode
 `
 
 ---
@@ -183,7 +184,7 @@ exec i3
 ### i3 config
 
 ```
-$vim .config/i3/config
+$ vim .config/i3/config
 
 exec_always xrandr --output LVDS1 --off
 
@@ -195,6 +196,10 @@ for_window [class="^.*"] border pixel 2
 
 gaps inner 15
 gaps outer 15
+
+# Uncomment bar{ }
+
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 ```
 
 ---
@@ -216,5 +221,5 @@ $ makepkg -si
 
 ---
 
-### Audio
+### Audio control
 `# alsamixer`
