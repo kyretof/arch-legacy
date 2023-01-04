@@ -1,7 +1,7 @@
 # Arch Linux DOS/BIOS Installation Guide
 
 ### Verify the boot mode
-`# ls /sys/firmware/efi/efivars`
+`$ ls /sys/firmware/efi/efivars`
 
 ---
 
@@ -17,13 +17,13 @@ station device connect SSID
 ---
 
 ### Update the system clock
-`# timedatectl set-ntp true`
+`$ timedatectl set-ntp true`
 
 ---
 
 ### Partition the disks
 ```
-# cfdisk
+$ cfdisk
 2G | Linux Swap
 50G | Linux
 ```
@@ -32,58 +32,58 @@ station device connect SSID
 
 ### Format Partitions
 ```
-# mkfs.ext4 /dev/sda2
-# mkswap /dev/sda1
+$ mkfs.ext4 /dev/sda2
+$ mkswap /dev/sda1
 ```
 ---
 
 ### Mount the file systems
 ```
-# mount /dev/sda2 /mnt
-# swapon /dev/sda1
+$ mount /dev/sda2 /mnt
+$ swapon /dev/sda1
 ```
 ---
 
 ### Synchronize package databases
-`# pacman -Syy`
+`$ pacman -Syy`
 
 ---
 
 ### Fastest mirror
 ```
-# pacman -S reflector
-# reflector --verbose --latest 20 --sort rate  --save /etc/pacman.d/mirrorlist 
+$ pacman -S reflector
+$ reflector --verbose --latest 20 --sort rate  --save /etc/pacman.d/mirrorlist 
 ```
 
 ---
 
 ### Keyring update
-`pacman -S archlinux-keyring`
+`$ pacman -S archlinux-keyring`
 
 ---
 
 ### Install essential packages
-`# pacstrap /mnt base linux-lts linux-firmware vim nano git`
+`$ pacstrap /mnt base linux-lts linux-firmware vim nano git`
 
 ---
 
 ### Fstab
-`# genfstab -U /mnt >> /mnt/etc/fstab`
+`$ genfstab -U /mnt >> /mnt/etc/fstab`
 
 ---
 
 ### Chroot
-`# arch-chroot /mnt`
+`$ arch-chroot /mnt`
 
 ---
 
 ### Set the time zone
-`# ln -sf /usr/share/zoneinfo/Region/City /etc/localtime`
+`$ ln -sf /usr/share/zoneinfo/Region/City /etc/localtime`
 
 ---
 
 ### Run hwclock(8) to generate /etc/adjtime
-`# hwclock --systohc`
+`$ hwclock --systohc`
 
 ---
 
@@ -91,11 +91,11 @@ station device connect SSID
 ```
 Edit /etc/locale.gen and uncomment en_US.UTF-8 UTF-8 and other needed locales. Generate the locales by running: 
 
-# locale-gen
+$ locale-gen
 
 Create the locale.conf(5) file, and set the LANG variable accordingly: 
 
-# echo "LANG=en_US.UTF-8" >> /etc/locale.conf
+$ echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 ```
 
 ---
@@ -104,7 +104,7 @@ Create the locale.conf(5) file, and set the LANG variable accordingly:
 ```
 Create the hostname file: 
 
-# echo 'hostname' >> /etc/hostname
+$ echo 'hostname' >> /etc/hostname
 
 Add the hosts ip
 
@@ -122,10 +122,11 @@ Add the hosts ip
 
 ```
 Users and passwords:
-passwd (set root pass)
-useradd -m username (make another user)
-passwd username (set that user's password)
-usermod -aG wheel,audio,video,optical,storage username
+
+$ passwd (set root pass)
+$ useradd -m username (make another user)
+$ passwd username (set that user's password)
+$ usermod -aG wheel,audio,video,optical,storage username
 
 
 Sudo:
@@ -136,29 +137,29 @@ EDITOR=nano visudo
 ---
 
 ### Install
-`pacman -S xorg xorg-xinit i3 i3status i3blocks nitrogen picom dmenu firefox opera alacritty terminator alsa alsa-utils htop grub dosfstools os-prober mtools networkmanager base-devel linux-headers htop xf86-video-intel intel-ucode
+`$ pacman -S xorg xorg-xinit i3 i3status i3blocks nitrogen picom dmenu firefox opera alacritty terminator alsa alsa-utils htop grub os-prober mtools networkmanager base-devel linux-headers htop xf86-video-intel intel-ucode
 `
 
 ---
 
 ### Network Manager
-`systemctl enable NetworkManager`
+`$ systemctl enable NetworkManager`
 
 ---
 
 ### Grub
 ```
-grub-install --target=i386-pc /dev/sda or grub-install /dev/sda
-grub-mkconfig -o /boot/grub/grub.cfg
+$ grub-install /dev/sda
+$ grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 ---
 
 ### Firewall
 ```
-sudo pacman -S ufw
-sudo systemctl start ufw
-sudo systemctl enable ufw
+$ sudo pacman -S ufw
+$ sudo systemctl start ufw
+$ sudo systemctl enable ufw
 ```
 
 ---
@@ -193,14 +194,20 @@ gaps outer 15
 
 ### Font
 ```
-pacman -S dina-font tamsyn-font ttf-bitstream-vera ttf-croscore ttf-dejavu ttf-droid gnu-free-fonts ttf-ibm-plex ttf-liberation ttf-linux-libertine noto-fonts ttf-roboto tex-gyre-fonts ttf-ubuntu-font-family ttf-anonymous-pro ttf-cascadia-code ttf-fantasque-sans-mono ttf-fira-mono ttf-hack ttf-fira-code ttf-inconsolata ttf-jetbrains-mono ttf-monofur adobe-source-code-pro-fonts cantarell-fonts inter-font ttf-opensans gentium-plus-font ttf-junicode adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts noto-fonts-cjk noto-fonts-emoji
+$ pacman -S dina-font tamsyn-font ttf-bitstream-vera ttf-croscore ttf-dejavu ttf-droid gnu-free-fonts ttf-ibm-plex ttf-liberation ttf-linux-libertine noto-fonts ttf-roboto tex-gyre-fonts ttf-ubuntu-font-family ttf-anonymous-pro ttf-cascadia-code ttf-fantasque-sans-mono ttf-fira-mono ttf-hack ttf-fira-code ttf-inconsolata ttf-jetbrains-mono ttf-monofur adobe-source-code-pro-fonts cantarell-fonts inter-font ttf-opensans gentium-plus-font ttf-junicode adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts noto-fonts-cjk noto-fonts-emoji
 ```
 
 ---
 
 ### yay
 ```
-sudo git clone https://aur.archlinux.org/yay-git.git
-cd yay
-makepkg -si
+$ sudo git clone https://aur.archlinux.org/yay-git.git
+$ sudo chown user:user ./yay-git
+$ cd yay
+$ makepkg -si
 ```
+
+---
+
+### Audio
+`# alsamixer`
